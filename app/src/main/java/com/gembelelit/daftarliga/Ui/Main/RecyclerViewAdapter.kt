@@ -1,9 +1,12 @@
-package com.gembelelit.daftarliga
+package com.gembelelit.daftarliga.Ui.Main
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.gembelelit.daftarliga.Model.Liga
+import com.gembelelit.daftarliga.Component.LigaUI
 import org.jetbrains.anko.AnkoContext
 
 class RecyclerViewAdapter(
@@ -14,10 +17,12 @@ class RecyclerViewAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvTitle = itemView.findViewById<TextView>(LigaUI.tvTitleId)
         var tvYear = itemView.findViewById<TextView>(LigaUI.tvYearId)
+        var imageLiga= itemView.findViewById<ImageView>(LigaUI.imageLiga)
 
         fun bindItem(items: Liga) {
-            tvTitle.text = "${items.title}"
-            tvYear.text = "${items.year}"
+            tvTitle.text = "${items.judul}"
+            tvYear.text = "${items.deskripsi}"
+            imageLiga.setImageResource(items.gambar)
             itemView.setOnClickListener {
                 onItemClick?.invoke(items)
             }
